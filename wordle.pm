@@ -226,16 +226,13 @@ sub print_score{
 my $user = $ENV{ LOGNAME };
 my %state = get_game_state();
 my $has_user_played = check_players($user, $state{today});
-#my $has_user_played = 0;
+chomp(my $solution = select_word($state{today}));
 system "clear";
 
 #Game Loop
 if($has_user_played == 0){
   print_title();
   my @board;
-  chomp(my $solution = select_word($state{today}));
-  #my $solution = "stole";
-  #print("$solution\n");
   for(my $i = 0; $i < 6; $i++){
     my $guess = guess_word();
 
